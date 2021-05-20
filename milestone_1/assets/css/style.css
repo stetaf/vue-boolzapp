@@ -78,7 +78,7 @@ body { background-color: #dcdbd2; }
     font-size: 25px;
 }
 
-.upper_menu i { margin: 0 10px; }
+.upper_menu i { margin-left: 20px; }
 
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
