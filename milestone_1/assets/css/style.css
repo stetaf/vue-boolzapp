@@ -47,6 +47,15 @@ body { background-color: #dcdbd2; }
     background-color: white;
 }
 
+.messages { 
+    background: url('../img/mine.jpg');
+    height: calc(100% - 200px);
+}
+
+.inputs { 
+    height: 100px;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
