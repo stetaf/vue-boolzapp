@@ -34,6 +34,14 @@ body { background-color: #dcdbd2; }
     background-color: blueviolet;
 }
 
+.notify_me {
+    height: 120px;
+}
+
+.search_contact { 
+    height: 65px;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
