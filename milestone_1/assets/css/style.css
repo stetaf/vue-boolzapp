@@ -19,7 +19,7 @@ body {
 }
 
 #contacts_menu { 
-    width: 400px;
+    width: 450px;
     height: calc(100% - 50px);
     margin: 25px 0px;
     background-color: red;
