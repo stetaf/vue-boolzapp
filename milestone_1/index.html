@@ -44,11 +44,11 @@
                     <i class="fas fa-search c_gray"></i>
                 </div>
                 <div class="contacts br_gray">
-                    <div id="0">
+                    <div v-for="(contact, index) in contacts" :id="index">
                         <div class="avatar_contact">
-                            <img src="./assets/img/avatar_1.jpg" alt="Avatar#1">
+                            <img :src="getAvatar(index)" alt="Avatar">
                         </div>    
-                        <span>Michele</span>
+                        <span>{{getName(contacts, index)}}</span>
                     </div>
                 </div>
             </div>
