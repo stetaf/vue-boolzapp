@@ -137,13 +137,17 @@ body {
 .contacts > div { 
     display: flex;
     justify-content: flex-start;
-    margin: 20px;
+    padding: 20px;
 }
 
 .contacts > div span { 
     font-size: 25px;
     margin-left: 30px;
 }
+
+.contacts > div:nth-child(1),
+.contacts > div:nth-child(2),
+.contacts > div:nth-child(3) { border-bottom: 1px solid #ececec; }
 
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
