@@ -129,6 +129,22 @@ body {
     font-size: 20px;
 }
 
+.avatar_contact img {
+    border-radius: 50%;
+    width: 90px;
+}
+
+.contacts > div { 
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+}
+
+.contacts > div span { 
+    font-size: 25px;
+    margin-left: 30px;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
