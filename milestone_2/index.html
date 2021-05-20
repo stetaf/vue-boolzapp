@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BoolzApp</title>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />    
+    <!-- VUE -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app_container">
+        <div id="app">
+            <div id="contacts_menu">
+                <div class="upper_menu bg_light_gray br_gray">
+                    <div class="avatar_self">
+                        <img src="./assets/img/avatar_io.jpg" alt="Self avatar">
+                        <span>Nome Utente</span>
+                    </div>
+                    <div class="tools_self">
+                        <i class="fas fa-circle-notch c_gray fs-30"></i>
+                        <i class="fas fa-comment-alt c_gray fs-30"></i>
+                        <i class="fas fa-ellipsis-v c_gray fs-30"></i>
+                    </div>
+                </div>
+                <div class="notify_me bg_light_blue br_gray">
+                    <div class="bell">
+                        <i class="fas fa-bell-slash fs-30"></i>
+                    </div>
+                    <div class="notify_msg">
+                        <span class="fs-21">Ricevi notifiche di nuovi messaggi</span>
+                        <a href="#" class="c_gray2 fs-18"><span>Attiva notifiche desktop</span></a>
+                    </div>
+                </div>
+                <div class="search_contact bg_light_gray br_gray">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat" id="search">
+                    <i class="fas fa-search c_gray"></i>
+                </div>
+                <div class="contacts br_gray">
+                    <div v-for="(contact, index) in contacts" :id="index">
+                        <div class="avatar_contact">
+                            <img :src="getAvatar(index)" alt="Avatar">
+                        </div>    
+                        <span>{{getName(contacts, index)}}</span>
+                    </div>
+                </div>
+            </div>
+            <div id="conversation">
+                <div class="upper_menu bg_light_gray">
+                    <div class="avatar_self">
+                        <div>
+                            <img :src="getAvatar(0)" alt="Self avatar">
+                        </div>
+                        <div>
+                            <span>{{current['name']}}</span>
+                            <span id="last_online" class="c_gray2 fs-18">Ultimo accesso oggi alle</span>
+                        </div>
+                    </div>
+                    <div class="tools_self">
+                        <i class="fas fa-search c_gray fs-30"></i>
+                        <i class="fas fa-paperclip c_gray fs-30"></i>
+                        <i class="fas fa-ellipsis-v c_gray fs-30"></i>
+                    </div>
+                </div>
+                <div class="messages"></div>
+                <div class="inputs bg_light_gray">
+                    <i class="far fa-smile c_gray fs-40"></i>
+                    <textarea placeholder="Scrivi un messaggio..."></textarea>
+                    <i class="fas fa-microphone c_gray fs-40"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- App -->
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
