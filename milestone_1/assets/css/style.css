@@ -146,6 +146,27 @@ body {
 
 #last_online { display: block; }
 
+.inputs { 
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.inputs textarea {
+    height: calc(100% - 30px);
+    width: calc(100% - 150px);
+    border-radius: 5px;
+    outline: 0px;
+    border: 0px;
+    padding: 10px;
+    resize: none;
+}
+
+.inputs textarea::placeholder { 
+    color: grey;
+    line-height: 50px;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
@@ -165,3 +186,5 @@ body {
 .fs-21 { font-size: 21px; }
 
 .fs-18 { font-size: 18px !important; } 
+
+.fs-40 { font-size: 40px; }
