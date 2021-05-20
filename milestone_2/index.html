@@ -71,8 +71,10 @@
                 </div>
                 <div class="messages">
                     <div class="message" :class="messages['status']" v-for="messages in conversation">
-                        <span class="text">{{ messages['text'] }}</span>
-                        <span class="time">12/09/2021 12:41:56</span>
+                        <div>
+                            <span class="text">{{ messages['text'] }}</span>
+                            <span class="time">12/09/2021 12:41:56</span>
+                        </div>
                     </div>
                 </div>
                 <div class="inputs bg_light_gray">

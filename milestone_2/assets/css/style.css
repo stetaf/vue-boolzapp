@@ -63,6 +63,7 @@ body {
     background-size: contain;
     height: calc(100% - 200px);
     overflow-y: scroll;
+    padding: 20px;
 }
 
 .inputs { 
@@ -174,16 +175,13 @@ body {
     font-size: 20px;
 }
 
-.messages .message { 
-    background: white;
+.message { padding: 15px; }
+
+.message > div {
     width: calc(50% - 50px);
-    margin: 25px;
-    height: 75px;
     position: relative;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 20px;
+    background: white;
+    padding: 25px 20px;
     border-radius: 10px;
 }
 
@@ -198,8 +196,12 @@ body {
 }
 
 .sent { 
-    margin-left: 445px !important;
-    background-color: #d5f9ba !important;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sent > div { 
+    background-color: #d5f9ba;
 }
 
 /* Colors */
