@@ -1,0 +1,38 @@
+/* Func */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Page */ 
+body { background-color: #dcdbd2; }
+
+#app { 
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contacts_menu { 
+    width: 400px;
+    height: calc(100% - 50px);
+    margin: 25px 0px;
+    background-color: red;
+}
+
+#conversation { 
+    width: 850px;
+    height: calc(100% - 50px);
+    margin: 25px 0px;
+    background-color: blue;
+}
+
+/* Colors */
+.bg_light_gray { background-color: #eaeaea; }
+
+.bg_light_gray2 { background-color: #f2f2f2; }
+
+.bg_light_blue { background-color: #8edafc; }
+
