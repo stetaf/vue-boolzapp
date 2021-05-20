@@ -86,7 +86,8 @@ const app = new Vue ({
                     }
                 ],
             },
-        ]
+        ],
+        current: ''
     },
     methods: {
         getName(contact, index) {
@@ -94,6 +95,12 @@ const app = new Vue ({
         },
         getAvatar(index) {
             return `./assets/img/avatar_${index+1}.jpg`;
+        },
+        getCurrent(list) {
+            return list[0];
         }
+    },
+    mounted: function() {
+        this.current = this.getCurrent(this.contacts);
     }
 });
