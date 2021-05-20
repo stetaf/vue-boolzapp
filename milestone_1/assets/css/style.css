@@ -6,7 +6,10 @@
 }
 
 /* Page sections */ 
-body { background-color: #dcdbd2; }
+body { 
+    background-color: #dcdbd2; 
+    font-family: 'Roboto', sans-serif;
+}
 
 #app { 
     height: 100vh;
