@@ -7,8 +7,11 @@
 
 /* Page sections */ 
 body { 
-    background-color: #dcdbd2; 
     font-family: 'Roboto', sans-serif;
+    background-color: #dcdbd2;
+    background-image: linear-gradient(to bottom, #009688, #009688);
+    background-repeat: no-repeat;
+    background-size: 100% 125px;
 }
 
 #app { 
@@ -174,13 +177,15 @@ body {
 
 .bg_light_blue { background-color: #8edafc; }
 
-.br_gray { border-right: 1px solid #dad8d8; }
+.bg_watergreen { background-color: #009688; }
 
 .c_gray { color: #b1b1b1; } 
 
 .c_gray2 { color: #636363; } 
 
 /* Func */
+.br_gray { border-right: 1px solid #dad8d8; }
+
 .fs-30 { font-size: 30px; }
 
 .fs-21 { font-size: 21px; }
