@@ -45,12 +45,14 @@ body { background-color: #dcdbd2; }
 .contacts {
     height: calc(100% - 285px);
     background-color: white;
+    overflow-y: scroll;
 }
 
 .messages { 
     background: url('../img/mine.jpg');
     background-size: contain;
     height: calc(100% - 200px);
+    overflow-y: scroll;
 }
 
 .inputs { 
