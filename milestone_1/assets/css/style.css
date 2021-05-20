@@ -29,6 +29,11 @@ body { background-color: #dcdbd2; }
     background-color: blue;
 }
 
+.upper_menu {
+    height: 100px;
+    background-color: blueviolet;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
