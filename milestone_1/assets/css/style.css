@@ -88,7 +88,10 @@ body {
     font-size: 25px;
 }
 
-.upper_menu i { margin-left: 20px; }
+.upper_menu i { 
+    margin-left: 20px; 
+    margin-right: 5px;
+}
 
 .notify_me { 
     display: flex;
