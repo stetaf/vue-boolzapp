@@ -46,6 +46,7 @@ body {
 }
 
 .search_contact { 
+    background-color: #fafafa;
     height: 65px;
     display: flex;
     justify-content: center;
