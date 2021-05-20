@@ -42,6 +42,11 @@ body { background-color: #dcdbd2; }
     height: 65px;
 }
 
+.contacts {
+    height: calc(100% - 285px);
+    background-color: white;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
