@@ -83,6 +83,30 @@ body {
 
 .upper_menu i { margin-left: 20px; }
 
+.notify_me { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bell { 
+    background-color: white;
+    border-radius: 50%;
+    width: 75px;
+    padding: 18px;
+    margin-right: 15px;
+} 
+ 
+.bell i { color: #8edafc; }
+
+.notify_msg span { display: block; }
+
+.notify_msg a { 
+    color: #636363;
+    font-size: 18px; 
+}
+
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
@@ -96,3 +120,5 @@ body {
 
 /* Func */
 .fs-30 { font-size: 30px; }
+
+.fs-21 { font-size: 21px; }
