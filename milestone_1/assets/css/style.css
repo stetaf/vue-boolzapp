@@ -49,6 +49,7 @@ body { background-color: #dcdbd2; }
 
 .messages { 
     background: url('../img/mine.jpg');
+    background-size: contain;
     height: calc(100% - 200px);
 }
 
