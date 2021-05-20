@@ -173,6 +173,34 @@ body {
     font-size: 20px;
 }
 
+.messages .message { 
+    background: white;
+    width: calc(50% - 50px);
+    margin: 25px;
+    height: 75px;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+    border-radius: 10px;
+}
+
+.message .text { font-size: 18px; }
+
+.message .time { 
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #b9b7b7;
+    font-size: 15px;
+}
+
+.sent { 
+    margin-left: 445px !important;
+    background-color: #d5f9ba !important;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 

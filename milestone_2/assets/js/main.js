@@ -87,7 +87,8 @@ const app = new Vue ({
                 ],
             },
         ],
-        current: ''
+        current: '',
+        conversation: ''
     },
     methods: {
         getName(contact, index) {
@@ -96,11 +97,23 @@ const app = new Vue ({
         getAvatar(index) {
             return `./assets/img/avatar_${index+1}.jpg`;
         },
-        getCurrent(list) {
-            return list[0];
+        getCurrent(list, index) {
+            return list[index];
+        },
+        getConversation(index) {
+            return this.contacts[index]['messages'];
         }
     },
     mounted: function() {
-        this.current = this.getCurrent(this.contacts);
+        this.current = this.getCurrent(this.contacts, 0);
+        this.conversation = this.getConversation(0);
+
+        let left_contacts = document.querySelectorAll('.contacts > div');
+        left_contacts.forEach(element => {
+            element.addEventListener("click", () => {
+                this.current = this.getCurrent(this.contacts, element.id)
+                this.conversation = this.getConversation(element.id);
+            });  
+        });
     }
 });

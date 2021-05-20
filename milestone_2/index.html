@@ -56,7 +56,7 @@
                 <div class="upper_menu bg_light_gray">
                     <div class="avatar_self">
                         <div>
-                            <img :src="getAvatar(0)" alt="Self avatar">
+                            <img :src="'./assets/img/avatar' + current['avatar'] + '.jpg'" alt="Self avatar">
                         </div>
                         <div>
                             <span>{{current['name']}}</span>
@@ -69,7 +69,12 @@
                         <i class="fas fa-ellipsis-v c_gray fs-30"></i>
                     </div>
                 </div>
-                <div class="messages"></div>
+                <div class="messages">
+                    <div class="message" :class="messages['status']" v-for="messages in conversation">
+                        <span class="text">{{ messages['text'] }}</span>
+                        <span class="time">12/09/2021 12:41:56</span>
+                    </div>
+                </div>
                 <div class="inputs bg_light_gray">
                     <i class="far fa-smile c_gray fs-40"></i>
                     <textarea placeholder="Scrivi un messaggio..."></textarea>
