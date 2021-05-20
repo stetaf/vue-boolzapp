@@ -148,6 +148,8 @@ body {
 .contacts > div:nth-child(2),
 .contacts > div:nth-child(3) { border-bottom: 1px solid #ececec; }
 
+.contacts > div:hover { background-color: #e9ebeb; }
+
 #last_online { display: block; }
 
 .inputs { 
