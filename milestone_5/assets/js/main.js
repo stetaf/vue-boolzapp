@@ -107,6 +107,9 @@ const app = new Vue ({
             let d = new Date();
             return `${this.formatZero(d.getDate())}/${this.formatZero(d.getMonth()+1)}/${d.getFullYear()} ${this.formatZero(d.getHours())}:${this.formatZero(d.getMinutes())}:${this.formatZero(d.getSeconds())}`;
         },
+        deleteMessage(index) {
+            this.current['messages'].splice(index, 1);
+        },
         sendMessage() {
             let message_textarea = document.querySelector('.inputs > textarea');
             let message = (message_textarea.value).replaceAll('\n', '');
@@ -150,6 +153,29 @@ const app = new Vue ({
                 }
             });
         },
+        showOptions(index, a) {
+            let options = document.querySelectorAll('.message > div > div');
+            options.forEach((element) => {
+                if (element.id.includes(index)) {
+                    if (!element.classList.contains('d-none')){
+                        element.classList.add('d-none');
+                        element.classList.remove('d-block');
+                    } else {
+                        element.classList.remove('d-none');
+                        element.classList.add('d-block');
+                    }
+                }
+            });
+        },
+        hideOptions() {
+            let options = document.querySelectorAll('.message > div > div');
+            options.forEach((element) => {
+                if (element.classList.contains('d-block')){
+                    element.classList.remove('d-block');
+                }
+                element.classList.add('d-none'); 
+            });
+        },
         formatZero(stringa) {
             let n = parseInt(stringa);
             let newStr = '';
@@ -168,6 +194,7 @@ const app = new Vue ({
         let left_contacts = document.querySelectorAll('.contacts > div');
         left_contacts.forEach(element => {
             element.addEventListener("click", () => {
+                this.hideOptions();
                 this.current = this.getCurrent(this.contacts, element.id)
                 this.conversation = this.getConversation(element.id);
             });  
