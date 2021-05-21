@@ -111,6 +111,20 @@ const app = new Vue ({
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsgTime = this.contacts[index]['messages'][lastIndex-1]['date'];
 
+            let first = lastMsgTime.substring(0, lastMsgTime.indexOf(' '));
+            let second = lastMsgTime.substring(lastMsgTime.indexOf(' '), lastMsgTime.length);
+            let numbers = first.split('/');
+            let date = new Date();
+
+            if (date.getFullYear() == Number(numbers[2])) {
+                if ((date.getMonth() + 1) == Number(numbers[1])) {
+                    if (date.getDate() == Number(numbers[0])) {
+                        lastMsgTime = `oggi alle ${second}`;
+                    } else if ((date.getDate() + 1) == numbers[0]) {
+                        lastMsgTime = `ieri alle ${second}`;
+                    }
+                }
+            } 
             return lastMsgTime;   
         },
         getLastMsg(index) {
@@ -135,7 +149,7 @@ const app = new Vue ({
             }
        
             this.current['messages'].push(msgObj);
-            this.current['lastseen'] = msgObj.date;
+            this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
             this.scrollDown();
             message_textarea.value = '';
             this.receiveMsg();
@@ -153,7 +167,7 @@ const app = new Vue ({
                 }
                 
                 this.current['messages'].push(msgObj);
-                this.current['lastseen'] = msgObj.date;
+                this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
                 this.scrollDown();
             }, 1000);
         },
