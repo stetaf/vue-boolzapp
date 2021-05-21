@@ -140,6 +140,16 @@ const app = new Vue ({
                 this.scrollDown();
             }, 1000);
         },
+        filterContacts() {
+            let filter = document.querySelector('#search').value.toLowerCase();
+            this.contacts.forEach((element, index) => {
+                if (element.name.toLowerCase().indexOf(filter) === -1) {
+                    document.getElementById(''+index).style.display = 'none';
+                } else {
+                    document.getElementById(''+index).style.display = '';
+                }
+            });
+        },
         formatZero(stringa) {
             let n = parseInt(stringa);
             let newStr = '';
