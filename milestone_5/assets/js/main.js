@@ -107,6 +107,15 @@ const app = new Vue ({
             let d = new Date();
             return `${this.formatZero(d.getDate())}/${this.formatZero(d.getMonth()+1)}/${d.getFullYear()} ${this.formatZero(d.getHours())}:${this.formatZero(d.getMinutes())}:${this.formatZero(d.getSeconds())}`;
         },
+        getLastMessage(index, val) {
+            let lastIndex = this.contacts[index]['messages'].length;
+            switch (val) {
+                case 1: 
+                    return this.contacts[index]['messages'][lastIndex-1]['text'];
+                case 2: 
+                    return this.contacts[index]['messages'][lastIndex-1]['date'];   
+            }
+        },
         deleteMessage(index) {
             this.current['messages'].splice(index, 1);
         },

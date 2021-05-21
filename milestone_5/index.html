@@ -49,7 +49,13 @@
                         <div class="avatar_contact">
                             <img :src="getAvatar(index)" alt="Avatar">
                         </div>    
-                        <span>{{getName(contacts, index)}}</span>
+                        <div>
+                            <span style="margin-left: 15px;">{{getName(contacts, index)}}</span>
+                            <span class="last_time fs-18 c_gray">{{ getLastMessage(index, 2) }}</span>
+                            <div>
+                                <p class="last_msg fs-15 c_gray">{{ getLastMessage(index, 1) }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

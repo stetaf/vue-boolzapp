@@ -137,11 +137,11 @@ body {
     display: flex;
     justify-content: flex-start;
     padding: 20px;
+    position: relative;
 }
 
 .contacts > div span { 
     font-size: 25px;
-    margin-left: 30px;
 }
 
 .contacts > div:nth-child(1),
@@ -228,6 +228,22 @@ body {
     margin: 20px 0; 
 }
 
+.last_msg { margin-left: 15px; }
+
+.last_time {
+    position: absolute;
+    top: 0;
+    right: 0;    
+    margin-top: 5px;
+}
+
+.contacts > div > div:nth-child(2)  { position: relative; width: 100%; }
+
+.contacts > div > div:nth-child(2) > div {
+    margin-top: 5px;
+    position: relative;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
@@ -249,6 +265,8 @@ body {
 .fs-21 { font-size: 21px; }
 
 .fs-18 { font-size: 18px !important; } 
+
+.fs-15 { font-size: 15px !important; }
 
 .fs-40 { font-size: 40px; }
 
