@@ -102,6 +102,31 @@ const app = new Vue ({
         },
         getConversation(index) {
             return this.contacts[index]['messages'];
+        },
+        getDate() {
+            let d = new Date();
+            return `${this.formatZero(d.getDate())}/${this.formatZero(d.getMonth()+1)}/${d.getFullYear()} ${this.formatZero(d.getHours())}:${this.formatZero(d.getMinutes())}:${this.formatZero(d.getSeconds())}`;
+        },
+        sendMessage() {
+            let message_textarea = document.querySelector('.inputs > textarea');
+            let message = (message_textarea.value).replaceAll('\n', '');
+            let msgDate = this.getDate();
+            let msgStatus = "sent";
+
+            let msgObj = {
+                date: msgDate,
+                status: msgStatus,
+                text: message
+            }
+            
+            this.current['messages'].push(msgObj);
+            message_textarea.value = '';
+        },
+        formatZero(stringa) {
+            let n = parseInt(stringa);
+            let newStr = '';
+            (n < 10) ? newStr = newStr = `0${stringa}` : newStr = stringa;
+            return newStr;
         }
     },
     mounted: function() {
