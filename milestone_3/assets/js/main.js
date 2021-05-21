@@ -120,13 +120,35 @@ const app = new Vue ({
             }
             
             this.current['messages'].push(msgObj);
+            this.scrollDown();
             message_textarea.value = '';
+            this.receiveMsg();
+        },
+        receiveMsg() {
+            setTimeout(()=>{
+                let message = "Roger that!";
+                let msgDate = this.getDate();
+                let msgStatus = "received";
+    
+                let msgObj = {
+                    date: msgDate,
+                    status: msgStatus,
+                    text: message
+                }
+                
+                this.current['messages'].push(msgObj);
+                this.scrollDown();
+            }, 1000);
         },
         formatZero(stringa) {
             let n = parseInt(stringa);
             let newStr = '';
             (n < 10) ? newStr = newStr = `0${stringa}` : newStr = stringa;
             return newStr;
+        },
+        scrollDown() {
+            var div = document.querySelector('.messages');
+            div.scrollTop = div.scrollHeight - div.clientHeight;
         }
     },
     mounted: function() {

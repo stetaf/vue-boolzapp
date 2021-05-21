@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <div class="messages">
-                    <div class="message" :class="messages['status']" v-for="messages in conversation">
-                        <div>
+                    <div class="message" :class="messages['status']" v-for="(messages, index) in conversation">
+                        <div :id="'a'+index">
                             <span class="text">{{ messages['text'] }}</span>
                             <span class="time">{{ messages['date'] }}</span>
                         </div>
