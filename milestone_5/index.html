@@ -50,10 +50,10 @@
                             <img :src="getAvatar(index)" alt="Avatar">
                         </div>    
                         <div>
-                            <span style="margin-left: 15px;">{{getName(contacts, index)}}</span>
-                            <span class="last_time fs-18 c_gray">{{ getLastMessage(index, 2) }}</span>
+                            <span style="margin-left: 15px;">{{ getName(contacts, index) }}</span>
+                            <span class="last_time fs-18 c_gray">{{ getLastDate(index) }}</span>
                             <div>
-                                <p class="last_msg fs-15 c_gray">{{ getLastMessage(index, 1) }}</p>
+                                <p class="last_msg fs-15 c_gray">{{ getLastMsg(index) }}</p>
                             </div>
                         </div>
                     </div>
@@ -69,8 +69,8 @@
                             <img :src="'./assets/img/avatar' + current['avatar'] + '.jpg'" alt="Self avatar">
                         </div>
                         <div>
-                            <span>{{current['name']}}</span>
-                            <span id="last_online" class="c_gray2 fs-18">Ultimo accesso oggi alle</span>
+                            <span>{{ current['name'] }}</span>
+                            <span id="last_online" class="c_gray2 fs-18">Ultimo accesso oggi alle {{ current['lastseen'] }}</span>
                         </div>
                     </div>
                     <div class="tools_self">

@@ -107,14 +107,17 @@ const app = new Vue ({
             let d = new Date();
             return `${this.formatZero(d.getDate())}/${this.formatZero(d.getMonth()+1)}/${d.getFullYear()} ${this.formatZero(d.getHours())}:${this.formatZero(d.getMinutes())}:${this.formatZero(d.getSeconds())}`;
         },
-        getLastMessage(index, val) {
+        getLastDate(index) {
             let lastIndex = this.contacts[index]['messages'].length;
-            switch (val) {
-                case 1: 
-                    return this.contacts[index]['messages'][lastIndex-1]['text'];
-                case 2: 
-                    return this.contacts[index]['messages'][lastIndex-1]['date'];   
-            }
+            let lastMsgTime = this.contacts[index]['messages'][lastIndex-1]['date'];
+
+            return lastMsgTime;   
+        },
+        getLastMsg(index) {
+            let lastIndex = this.contacts[index]['messages'].length;
+            let lastMsg = this.contacts[index]['messages'][lastIndex-1]['text'];
+
+            return lastMsg;
         },
         deleteMessage(index) {
             this.current['messages'].splice(index, 1);
@@ -130,7 +133,7 @@ const app = new Vue ({
                 status: msgStatus,
                 text: message
             }
-            
+       
             this.current['messages'].push(msgObj);
             this.scrollDown();
             message_textarea.value = '';
@@ -198,6 +201,9 @@ const app = new Vue ({
     },
     mounted: function() {
         this.current = this.getCurrent(this.contacts, 0);
+        this.current.id = (this.contacts[0]['avatar'].substring(1, 2));
+        this.contacts[0]['lastseen'] = this.getLastDate(0);
+        this.contacts[0]['lastmsg'] = this.getLastMsg(0);
         this.conversation = this.getConversation(0);
 
         let left_contacts = document.querySelectorAll('.contacts > div');
@@ -205,6 +211,9 @@ const app = new Vue ({
             element.addEventListener("click", () => {
                 this.hideOptions();
                 this.current = this.getCurrent(this.contacts, element.id)
+                this.current.id = (this.contacts[element.id]['avatar'].substring(1, 2));
+                this.contacts[this.current.id - 1]['lastseen'] = this.getLastDate(this.current.id - 1);
+                this.contacts[this.current.id - 1]['lastmsg'] = this.getLastMsg(this.current.id - 1);
                 this.conversation = this.getConversation(element.id);
             });  
         });
