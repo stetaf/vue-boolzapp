@@ -135,6 +135,7 @@ const app = new Vue ({
             }
        
             this.current['messages'].push(msgObj);
+            this.current['lastseen'] = msgObj.date;
             this.scrollDown();
             message_textarea.value = '';
             this.receiveMsg();
@@ -152,6 +153,7 @@ const app = new Vue ({
                 }
                 
                 this.current['messages'].push(msgObj);
+                this.current['lastseen'] = msgObj.date;
                 this.scrollDown();
             }, 1000);
         },
