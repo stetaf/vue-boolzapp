@@ -134,7 +134,7 @@ const app = new Vue ({
             return lastMsg;
         },
         deleteMessage(index) {
-            this.current['messages'].splice(index, 1);
+            (confirm('Are you sure you want to delete this message?')) ? this.current['messages'].splice(index, 1) : '';
         },
         sendMessage() {
             let message_textarea = document.querySelector('.inputs > textarea');
