@@ -105,7 +105,7 @@ const app = new Vue ({
             let lastMsgTime = this.contacts[index]['messages'][lastIndex-1]['date'];
             
             let first = lastMsgTime.substring(0, lastMsgTime.indexOf(' '));
-            let second = lastMsgTime.substring(lastMsgTime.indexOf(' '), lastMsgTime.length -1 );
+            let second = lastMsgTime.substring(lastMsgTime.indexOf(' '), lastMsgTime.length);
             let numbers = first.split('/');
 
             if (dayjs().get('year') == Number(numbers[2])) {
