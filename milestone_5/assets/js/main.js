@@ -87,15 +87,11 @@ const app = new Vue ({
                 ],
             },
         ],
-        current: '',
-        conversation: ''
+        current: ''
     },
     methods: {
         getCurrent(list, index) {
             return list[index];
-        },
-        getConversation(index) {
-            return this.contacts[index]['messages'];
         },
         getDate() {
             return `${dayjs().format('DD/MM/YYYY HH:mm:ss')}`;
@@ -199,7 +195,6 @@ const app = new Vue ({
         this.current.id = (this.contacts[0]['avatar'].substring(1, 2));
         this.contacts[0]['lastseen'] = this.getLastDate(0);
         this.contacts[0]['lastmsg'] = this.getLastMsg(0);
-        this.conversation = this.getConversation(0);
 
         let left_contacts = document.querySelectorAll('.contacts > div');
         left_contacts.forEach(element => {
@@ -209,7 +204,6 @@ const app = new Vue ({
                 this.current.id = (this.contacts[element.id]['avatar'].substring(1, 2));
                 this.contacts[this.current.id - 1]['lastseen'] = this.getLastDate(this.current.id - 1);
                 this.contacts[this.current.id - 1]['lastmsg'] = this.getLastMsg(this.current.id - 1);
-                this.conversation = this.getConversation(element.id);
             });  
         });
     }

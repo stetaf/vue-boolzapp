@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="messages">
-                    <div class="message" :class="messages['status']" v-for="(messages, index) in conversation" @click="showOptions(index)">
+                    <div class="message" :class="messages['status']" v-for="(messages, index) in current['messages']" @click="showOptions(index)">
                         <div :id="'a'+index">
                             <span class="text">{{ messages['text'] }}</span>
                             <span class="time">{{ messages['date'] }}</span>
