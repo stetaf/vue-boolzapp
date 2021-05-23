@@ -128,20 +128,24 @@ const app = new Vue ({
         deleteMessage(index) {
             (confirm('Are you sure you want to delete this message?')) ? this.current['messages'].splice(index, 1) : '';
         },
+        newMessage(message, date, status) {
+            let msgObj = {
+                date: date,
+                status: status,
+                text: message
+            }
+            this.current['messages'].push(msgObj);
+            this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
+            this.current['lastmsg'] = this.getLastMsg(this.current['id'] - 1);
+        },
         sendMessage() {
             let message_textarea = document.querySelector('.inputs > textarea');
             let message = (message_textarea.value).replaceAll('\n', '');
             let msgDate = this.getDate();
             let msgStatus = "sent";
 
-            let msgObj = {
-                date: msgDate,
-                status: msgStatus,
-                text: message
-            }
+            this.newMessage(message, msgDate, msgStatus);
        
-            this.current['messages'].push(msgObj);
-            this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
             this.scrollDown();
             message_textarea.value = '';
             this.receiveMsg();
@@ -152,14 +156,7 @@ const app = new Vue ({
                 let msgDate = this.getDate();
                 let msgStatus = "received";
     
-                let msgObj = {
-                    date: msgDate,
-                    status: msgStatus,
-                    text: message
-                }
-                
-                this.current['messages'].push(msgObj);
-                this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
+                this.newMessage(message, msgDate, msgStatus);
                 this.scrollDown();
             }, 1000);
         },
