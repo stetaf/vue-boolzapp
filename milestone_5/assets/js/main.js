@@ -174,11 +174,7 @@ const app = new Vue ({
         filterContacts() {
             let filter = document.querySelector('#search').value.toLowerCase();
             this.contacts.forEach((element) => {
-                 if (element.name.toLowerCase().indexOf(filter) === -1) {
-                    element.visible = false;    
-                } else {
-                    element.visible = true;    
-                }
+                (element.name.toLowerCase().indexOf(filter) === -1) ? element.visible = false : element.visible = true;
             }); 
         },
         showOptions(index, a) {
