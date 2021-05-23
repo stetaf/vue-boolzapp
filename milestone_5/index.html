@@ -47,7 +47,7 @@
                     <i class="fas fa-search c_gray"></i>
                 </div>
                 <div class="contacts br_gray">
-                    <div v-for="(contact, index) in contacts" :id="index" v-if="contact.visible == true">
+                    <div v-for="(contact, index) in contacts" :id="index" :style="{display: contact.visible === true ? 'flex' : 'none'}">
                         <div class="avatar_contact">
                             <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="Avatar">
                         </div>    
