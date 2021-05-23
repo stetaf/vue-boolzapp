@@ -45,7 +45,7 @@
                     <i class="fas fa-search c_gray"></i>
                 </div>
                 <div class="contacts br_gray">
-                    <div v-for="(contact, index) in contacts" :id="index">
+                    <div v-for="(contact, index) in contacts" :id="index" v-if="contact.visible == true">
                         <div class="avatar_contact">
                             <img :src="getAvatar(index)" alt="Avatar">
                         </div>    

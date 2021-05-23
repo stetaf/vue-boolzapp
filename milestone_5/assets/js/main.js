@@ -173,13 +173,13 @@ const app = new Vue ({
         },
         filterContacts() {
             let filter = document.querySelector('#search').value.toLowerCase();
-            this.contacts.forEach((element, index) => {
-                if (element.name.toLowerCase().indexOf(filter) === -1) {
-                    document.getElementById(''+index).style.display = 'none';
+            this.contacts.forEach((element) => {
+                 if (element.name.toLowerCase().indexOf(filter) === -1) {
+                    element.visible = false;    
                 } else {
-                    document.getElementById(''+index).style.display = '';
+                    element.visible = true;    
                 }
-            });
+            }); 
         },
         showOptions(index, a) {
             let options = document.querySelectorAll('.message > div > div');
