@@ -91,12 +91,6 @@ const app = new Vue ({
         conversation: ''
     },
     methods: {
-        getName(contact, index) {
-            return contact[index]['name'];
-        },
-        getAvatar(index) {
-            return `./assets/img/avatar_${index+1}.jpg`;
-        },
         getCurrent(list, index) {
             return list[index];
         },

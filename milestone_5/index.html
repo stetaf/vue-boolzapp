@@ -47,10 +47,10 @@
                 <div class="contacts br_gray">
                     <div v-for="(contact, index) in contacts" :id="index" v-if="contact.visible == true">
                         <div class="avatar_contact">
-                            <img :src="getAvatar(index)" alt="Avatar">
+                            <img :src="'./assets/img/avatar' + contact.avatar + '.jpg'" alt="Avatar">
                         </div>    
                         <div>
-                            <span style="margin-left: 15px;">{{ getName(contacts, index) }}</span>
+                            <span style="margin-left: 15px;">{{ contact.name }}</span>
                             <span class="last_time fs-18 c_gray">{{ getLastDate(index) }}</span>
                             <div>
                                 <p class="last_msg fs-15 c_gray">{{ getLastMsg(index) }}</p>
