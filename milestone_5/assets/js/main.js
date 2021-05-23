@@ -98,23 +98,21 @@ const app = new Vue ({
             return this.contacts[index]['messages'];
         },
         getDate() {
-            let d = new Date();
-            return `${this.formatZero(d.getDate())}/${this.formatZero(d.getMonth()+1)}/${d.getFullYear()} ${this.formatZero(d.getHours())}:${this.formatZero(d.getMinutes())}:${this.formatZero(d.getSeconds())}`;
+            return `${dayjs().format('DD/MM/YYYY HH:mm:ss')}`;
         },
         getLastDate(index) {
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsgTime = this.contacts[index]['messages'][lastIndex-1]['date'];
-
+            
             let first = lastMsgTime.substring(0, lastMsgTime.indexOf(' '));
-            let second = lastMsgTime.substring(lastMsgTime.indexOf(' '), lastMsgTime.length);
+            let second = lastMsgTime.substring(lastMsgTime.indexOf(' '), lastMsgTime.length -1 );
             let numbers = first.split('/');
-            let date = new Date();
 
-            if (date.getFullYear() == Number(numbers[2])) {
-                if ((date.getMonth() + 1) == Number(numbers[1])) {
-                    if (date.getDate() == Number(numbers[0])) {
+            if (dayjs().get('year') == Number(numbers[2])) {
+                if ((dayjs().get('month') + 1) == Number(numbers[1])) {
+                    if (dayjs().get('D') == Number(numbers[0])) {
                         lastMsgTime = `oggi alle ${second}`;
-                    } else if ((date.getDate() + 1) == numbers[0]) {
+                    } else if ((dayjs().get('D') + 1) == numbers[0]) {
                         lastMsgTime = `ieri alle ${second}`;
                     }
                 }
@@ -193,12 +191,6 @@ const app = new Vue ({
                 }
                 element.classList.add('d-none'); 
             });
-        },
-        formatZero(stringa) {
-            let n = parseInt(stringa);
-            let newStr = '';
-            (n < 10) ? newStr = newStr = `0${stringa}` : newStr = stringa;
-            return newStr;
         },
         scrollDown() {
             var div = document.querySelector('.messages');
