@@ -101,7 +101,10 @@
                 <div class="inputs bg_light_gray">
                     <i class="far fa-smile c_gray fs-40"></i>
                     <textarea placeholder="Scrivi un messaggio..." v-on:keyup.enter="sendMessage()"></textarea>
-                    <i class="fas fa-microphone c_gray fs-40"></i>
+                    <div>
+                        <i class="fas fa-microphone c_gray fs-40" id="btnRec" @click="startRecording()"></i>
+                        <i class="fas fa-stop c_gray fs-31_5 d-none" id="btnStop" @click="stopRecording()"></i>
+                    </div>
                 </div>
             </div>
             <!-- /Conversation -->
