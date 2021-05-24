@@ -162,7 +162,7 @@ const app = new Vue ({
                 (element.name.toLowerCase().indexOf(filter) === -1) ? element.visible = false : element.visible = true;
             }); 
         },
-        showOptions(index, a) {
+        showOptions(index) {
             let options = document.querySelectorAll('.message > div > div');
             options.forEach((element) => {
                 if (element.id.includes(index)) {
