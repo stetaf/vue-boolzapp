@@ -124,6 +124,8 @@ const app = new Vue ({
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsg = this.contacts[index]['messages'][lastIndex-1]['text'];
 
+            if ((lastMsg).includes('blob')) lastMsg = 'Audio';
+            
             return lastMsg;
         },
         deleteMessage(index) {
