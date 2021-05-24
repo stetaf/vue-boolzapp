@@ -91,7 +91,8 @@ const app = new Vue ({
             avatar: '_io',
             name: 'Nome Utente'
         },
-        current: ''
+        current: '',
+        audiourl: ''
     },
     methods: {
         getCurrent(list, index) {
@@ -128,27 +129,35 @@ const app = new Vue ({
         deleteMessage(index) {
             (confirm('Are you sure you want to delete this message?')) ? this.current['messages'].splice(index, 1) : '';
         },
-        newMessage(message, date, status) {
+        newMessage(message, date, status, audio = false) {
             let msgObj = {
                 date: date,
                 status: status,
                 text: message
             }
+
+            if (audio) msgObj.url = message;
+
             this.current['messages'].push(msgObj);
             this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
             this.current['lastmsg'] = this.getLastMsg(this.current['id'] - 1);
         },
         sendMessage() {
             let message_textarea = document.querySelector('.inputs > textarea');
-            let message = (message_textarea.value).replaceAll('\n', '');
-            let msgDate = this.getDate();
-            let msgStatus = "sent";
-
-            this.newMessage(message, msgDate, msgStatus);
-       
-            this.scrollDown();
-            message_textarea.value = '';
-            this.receiveMsg();
+            let message = (message_textarea.value).replaceAll('\n', '').trim();
+            
+            if (message.length >= 1) {
+                let msgDate = this.getDate();
+                let msgStatus = "sent";
+    
+                this.newMessage(message, msgDate, msgStatus);
+           
+                this.scrollDown();
+                message_textarea.value = '';
+                this.receiveMsg();
+            } else {
+                message_textarea.value = '';
+            }            
         },
         receiveMsg() {
             setTimeout(()=>{
@@ -192,6 +201,42 @@ const app = new Vue ({
         scrollDown() {
             var div = document.querySelector('.messages');
             div.scrollTop = div.scrollHeight - div.clientHeight;
+        },
+        startRecording() {
+            let buttons = document.querySelectorAll('.inputs > div > i');
+            buttons.forEach((element) => {
+                if (!element.classList.contains('d-none')){
+                    element.classList.add('d-none');
+                    element.classList.remove('d-block');
+                } else {
+                    element.classList.remove('d-none');
+                    element.classList.add('d-block');
+                }
+            });   
+            recorder.start();
+        },
+        stopRecording() {
+            let buttons = document.querySelectorAll('.inputs > div > i');
+            buttons.forEach((element) => {
+                if (!element.classList.contains('d-none')){
+                    element.classList.add('d-none');
+                    element.classList.remove('d-flex');
+                } else {
+                    element.classList.remove('d-none');
+                    element.classList.add('d-flex');
+                }
+            });   
+            recorder.stop();
+
+            setTimeout(() => {
+                let message = this.audiourl;
+                let date = this.getDate();
+                let status = "sent";
+
+                this.newMessage(message, date, status, true);
+            }, 10);
+
+            this.receiveMsg();
         }
     },
     mounted: function() {
@@ -210,5 +255,29 @@ const app = new Vue ({
                 this.contacts[this.current.id - 1]['lastmsg'] = this.getLastMsg(this.current.id - 1);
             });  
         });
+
+        let recordButton = document.getElementById('btnRec');
+        let stopButton = document.getElementById('btnStop');
+
+        navigator.mediaDevices.getUserMedia({ audio: true })
+        .then(function (stream) {
+            recordButton.addEventListener('click', this.startRecording);
+            stopButton.addEventListener('click', this.stopRecording);
+            
+            recorder = new MediaRecorder(stream);
+            recorder.addEventListener('dataavailable', onRecordingReady);
+        });
+
+        function onRecordingReady(e) {
+            // var audio = document.getElementById('audio');
+            // audio.src = URL.createObjectURL(e.data);
+            /*
+            let audioUrl = URL.createObjectURL(e.data);
+            let message = `<audio src="${audioUrl}" controls></audio>`;
+            let date = dayjs();
+            let status = "sent";
+            */
+            app.audiourl = URL.createObjectURL(e.data);
+        }
     }
 });
