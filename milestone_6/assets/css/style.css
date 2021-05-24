@@ -244,6 +244,9 @@ body {
     position: relative;
 }
 
+#btnRec:hover { color: #128c12; }
+#btnStop { color: #c30b0b; }
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
