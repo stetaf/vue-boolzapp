@@ -245,6 +245,30 @@ const app = new Vue ({
 
                 this.newMessage(message, date, status, true);
             }, 100);
+        },
+        searchMsg() {
+            let search = document.querySelector('.tools_self > .search_msg');
+            
+            if (search.classList.contains('d-none')) {
+                search.classList.remove('d-none');
+            } else {
+                search.classList.add('d-none');
+            }
+        },
+        filterMessages() {
+            let textToSearch = document.querySelector('#search_text').value.toLowerCase();
+            let messages = document.querySelectorAll('.message > div > span.text');
+            
+            messages.forEach(element => {
+                let text = element.innerHTML.toLowerCase();
+                if (text.includes(textToSearch) && textToSearch.length > 0) { 
+                    element.parentElement.style.background = '#ffeb3b'; 
+                    let parentId = element.parentElement.id;
+                    document.getElementById(parentId).scrollIntoView();
+                } else { 
+                    element.parentElement.style.background = '';
+                }; 
+            });
         }
     },
     mounted: function() {

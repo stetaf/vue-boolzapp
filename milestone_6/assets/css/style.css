@@ -247,6 +247,24 @@ body {
 #btnRec:hover { color: #128c12; }
 #btnStop { color: #c30b0b; }
 
+.tools_self { position: relative; }
+
+.search_msg {
+    top: 50px;
+    right: 100px;
+    position: absolute;
+    z-index: 999;
+}
+
+.search_msg input {
+    font-size: 20px;
+    border-radius: 5px;
+    border: 0px;
+    outline: 0px;
+    box-shadow: 1px 1px 6px -1px black;
+    padding: 7px;
+}
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
