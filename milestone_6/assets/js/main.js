@@ -124,7 +124,7 @@ const app = new Vue ({
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsg = this.contacts[index]['messages'][lastIndex-1]['text'];
 
-            if ((lastMsg).includes('blob')) lastMsg = 'Audio';
+            if (lastMsg.includes('blob') || (lastMsg.includes('http'))) lastMsg = 'Audio';
             
             return lastMsg;
         },
@@ -238,7 +238,13 @@ const app = new Vue ({
                 this.newMessage(message, date, status, true);
             }, 10);
 
-            this.receiveMsg();
+            setTimeout(() => {
+                let message = 'http://www.myinstants.com/media/sounds/sound-9______.mp3';
+                let date = this.getDate();
+                let status = "received";
+
+                this.newMessage(message, date, status, true);
+            }, 100);
         }
     },
     mounted: function() {
