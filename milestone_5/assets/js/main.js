@@ -108,7 +108,7 @@ const app = new Vue ({
                 if ((dayjs().get('month') + 1) == Number(numbers[1])) {
                     if (dayjs().get('D') == Number(numbers[0])) {
                         lastMsgTime = `oggi alle ${second}`;
-                    } else if ((dayjs().get('D') + 1) == numbers[0]) {
+                    } else if ((dayjs().get('D') + 1) == Number(numbers[0])) {
                         lastMsgTime = `ieri alle ${second}`;
                     }
                 }
