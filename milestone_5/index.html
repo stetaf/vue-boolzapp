@@ -24,8 +24,8 @@
             <div id="contacts_menu">
                 <div class="upper_menu bg_light_gray br_gray">
                     <div class="avatar_self">
-                        <img src="./assets/img/avatar_io.jpg" alt="Self avatar">
-                        <span>Nome Utente</span>
+                        <img :src="'./assets/img/avatar' + me.avatar + '.jpg'" alt="Self avatar">
+                        <span>{{ me.name }}</span>
                     </div>
                     <div class="tools_self">
                         <i class="fas fa-circle-notch c_gray fs-30"></i>

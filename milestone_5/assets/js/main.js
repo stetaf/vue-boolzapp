@@ -87,6 +87,10 @@ const app = new Vue ({
                 ],
             },
         ],
+        me: {
+            avatar: '_io',
+            name: 'Nome Utente'
+        },
         current: ''
     },
     methods: {
