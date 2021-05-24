@@ -269,14 +269,6 @@ const app = new Vue ({
         });
 
         function onRecordingReady(e) {
-            // var audio = document.getElementById('audio');
-            // audio.src = URL.createObjectURL(e.data);
-            /*
-            let audioUrl = URL.createObjectURL(e.data);
-            let message = `<audio src="${audioUrl}" controls></audio>`;
-            let date = dayjs();
-            let status = "sent";
-            */
             app.audiourl = URL.createObjectURL(e.data);
         }
     }
