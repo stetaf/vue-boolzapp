@@ -183,6 +183,7 @@ body {
     background: white;
     padding: 25px 20px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .message .text { font-size: 18px; }
