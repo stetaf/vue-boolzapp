@@ -85,8 +85,8 @@
                     </div>
                 </div>
                 <div class="messages">
-                    <div class="message" :class="messages['status']" v-for="(messages, index) in current['messages']" @click="showOptions(index)">
-                        <div :id="'a'+index">
+                    <div class="message" :class="messages['status']" v-for="(messages, index) in current['messages']">
+                        <div :id="'a'+index" @click="showOptions(index)">
                             <span class="text" v-if="!((messages['text']).includes('http'))">{{ messages['text'] }}</span> 
                             <audio :src="messages['url']" controls :style="{display: (messages.text).includes('http') ? '' : 'none'}" v-if="(messages['text']).includes('http')"></audio>
                             <span class="time">{{ messages['date'] }}</span>
