@@ -95,12 +95,29 @@ const app = new Vue ({
         audiourl: ''
     },
     methods: {
+        /**
+         * ### getCurrent
+         * Given an array of contacts, return the chosen active with index
+         * @param {Array} list 
+         * @param {Number} index 
+         * @returns {Object} The object of the current user
+         */
         getCurrent(list, index) {
             return list[index];
         },
+        /**
+         * ### getDate
+         * @returns {String} The current date with the specified format
+         */
         getDate() {
             return `${dayjs().format('DD/MM/YYYY HH:mm:ss')}`;
         },
+        /**
+         * ### getLastDate
+         * Given an index, return the last activity of the user in the contacts list
+         * @param {Number} index 
+         * @returns {string} The last message date
+         */
         getLastDate(index) {
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsgTime = this.contacts[index]['messages'][lastIndex-1]['date'];
@@ -120,6 +137,12 @@ const app = new Vue ({
             } 
             return lastMsgTime;   
         },
+        /**
+         * ### getLastMsg
+         * Given an index, return the last message of the user with index in the contacts list
+         * @param {Number} index 
+         * @returns {string} The last message sent/received by the user
+         */
         getLastMsg(index) {
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsg = this.contacts[index]['messages'][lastIndex-1]['text'];
@@ -128,9 +151,22 @@ const app = new Vue ({
             
             return lastMsg;
         },
+        /**
+         * ### deleteMessage
+         * Given an index, remove the message from the current user
+         * @param {Number} index 
+         */
         deleteMessage(index) {
             (confirm('Are you sure you want to delete this message?')) ? this.current['messages'].splice(index, 1) : '';
         },
+        /**
+         * ### newMessage
+         * Create a new message object and push it into the current user messages
+         * @param {string} message 
+         * @param {string} date 
+         * @param {string} status 
+         * @param {Boolean} audio 
+         */
         newMessage(message, date, status, audio = false) {
             let msgObj = {
                 date: date,
@@ -144,6 +180,10 @@ const app = new Vue ({
             this.current['lastseen'] = this.getLastDate(this.current['id'] - 1);
             this.current['lastmsg'] = this.getLastMsg(this.current['id'] - 1);
         },
+        /**
+         * ### sendMessage
+         * Get the current text of the textarea and call the newMessage function
+         */
         sendMessage() {
             let message_textarea = document.querySelector('.inputs > textarea');
             let message = (message_textarea.value).replaceAll('\n', '').trim();
@@ -161,6 +201,10 @@ const app = new Vue ({
                 message_textarea.value = '';
             }            
         },
+        /**
+         * ### receiveMsg
+         * Automatically create a response to a new message
+         */
         receiveMsg() {
             setTimeout(()=>{
                 let message = "Roger that!";
@@ -171,12 +215,21 @@ const app = new Vue ({
                 this.scrollDown();
             }, 1000);
         },
+        /**
+         * ### filterContacts
+         * Given a specified string, filter che contacts list and set the contacts visible attribute to true or false
+         */
         filterContacts() {
             let filter = document.querySelector('#search').value.toLowerCase();
             this.contacts.forEach((element) => {
                 (element.name.toLowerCase().indexOf(filter) === -1) ? element.visible = false : element.visible = true;
             }); 
         },
+        /**
+         * ### showOptions
+         * Show message options with index as id on click
+         * @param {Number} index 
+         */
         showOptions(index) {
             let options = document.querySelectorAll('.message > div > div');
             options.forEach((element) => {
@@ -191,6 +244,10 @@ const app = new Vue ({
                 }
             });
         },
+        /**
+         * ### hideOptions
+         * Hide all the message options
+         */
         hideOptions() {
             let options = document.querySelectorAll('.message > div > div');
             options.forEach((element) => {
@@ -200,10 +257,18 @@ const app = new Vue ({
                 element.classList.add('d-none'); 
             });
         },
+        /**
+         * ### scrollDown
+         * Automatically scrolls to the last message in the chat
+         */
         scrollDown() {
             var div = document.querySelector('.messages');
             div.scrollTop = div.scrollHeight - div.clientHeight;
         },
+        /**
+         * ### startRecording
+         * Start recording an audio message
+         */
         startRecording() {
             let buttons = document.querySelectorAll('.inputs > div > i');
             buttons.forEach((element) => {
@@ -217,6 +282,10 @@ const app = new Vue ({
             });   
             recorder.start();
         },
+        /**
+         * ### stopRecording
+         * Stop recording the audio message, send the message with the recording and the automatic audio message response
+         */
         stopRecording() {
             let buttons = document.querySelectorAll('.inputs > div > i');
             buttons.forEach((element) => {
@@ -246,6 +315,10 @@ const app = new Vue ({
                 this.newMessage(message, date, status, true);
             }, 100);
         },
+        /**
+         * ### searchMsg
+         * Open the search toolbox for the messages in the current conversation
+         */
         searchMsg() {
             let search = document.querySelector('.tools_self > .search_msg');
             
@@ -255,6 +328,10 @@ const app = new Vue ({
                 search.classList.add('d-none');
             }
         },
+        /**
+         * ### filterMessages
+         * Filter the contacts list by the user input
+         */
         filterMessages() {
             let textToSearch = document.querySelector('#search_text').value.toLowerCase();
             let messages = document.querySelectorAll('.message > div > span.text');
