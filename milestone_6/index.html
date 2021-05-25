@@ -66,7 +66,7 @@
             <!-- Conversation -->
             <div id="conversation">
                 <div class="upper_menu bg_light_gray">
-                    <div class="avatar_self">
+                    <div class="avatar_self"  v-if="current != ''">
                         <div>
                             <img :src="'./assets/img/avatar' + current['avatar'] + '.jpg'" alt="Self avatar">
                         </div>
@@ -75,7 +75,7 @@
                             <span id="last_online" class="c_gray2 fs-18">Ultimo accesso {{ current['lastseen'] }}</span>
                         </div>
                     </div>
-                    <div class="tools_self">
+                    <div class="tools_self"  v-if="current != ''">
                         <i class="fas fa-search c_gray fs-30" @click="searchMsg()"></i>
                         <i class="fas fa-paperclip c_gray fs-30"></i>
                         <i class="fas fa-ellipsis-v c_gray fs-30"></i>
@@ -109,6 +109,9 @@
                         <i class="fas fa-microphone c_gray fs-40" id="btnRec" @click="startRecording()"></i>
                         <i class="fas fa-stop c_gray fs-31_5 d-none" id="btnStop" @click="stopRecording()"></i>
                     </div>
+                </div>
+                <div class="home" :style="{display: (current === '') ? '' : 'none'}">
+                    <span>Per cominciare una conversazione, seleziona un contatto!</span>
                 </div>
             </div>
             <!-- /Conversation -->

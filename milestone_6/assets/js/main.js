@@ -188,18 +188,19 @@ const app = new Vue ({
             let message_textarea = document.querySelector('.inputs > textarea');
             let message = (message_textarea.value).replaceAll('\n', '').trim();
             
-            if (message.length >= 1) {
-                let msgDate = this.getDate();
-                let msgStatus = "sent";
-    
-                this.newMessage(message, msgDate, msgStatus);
-           
-                this.scrollDown();
-                message_textarea.value = '';
-                this.receiveMsg();
-            } else {
-                message_textarea.value = '';
-            }            
+            if (this.current != "") {
+                if (message.length >= 1) {
+                    let msgDate = this.getDate();
+                    let msgStatus = "sent";
+        
+                    this.newMessage(message, msgDate, msgStatus);
+               
+                    this.scrollDown();
+                    message_textarea.value = '';
+                    this.receiveMsg();
+                }      
+            }
+            message_textarea.value = '';
         },
         /**
          * ### receiveMsg
@@ -349,10 +350,10 @@ const app = new Vue ({
         }
     },
     mounted: function() {
-        this.current = this.getCurrent(this.contacts, 0);
-        this.current.id = (this.contacts[0]['avatar'].substring(1, 2));
-        this.contacts[0]['lastseen'] = this.getLastDate(0);
-        this.contacts[0]['lastmsg'] = this.getLastMsg(0);
+        // this.current = this.getCurrent(this.contacts, 0);
+        // this.current.id = (this.contacts[0]['avatar'].substring(1, 2));
+        // this.contacts[0]['lastseen'] = this.getLastDate(0);
+        // this.contacts[0]['lastmsg'] = this.getLastMsg(0);
 
         let left_contacts = document.querySelectorAll('.contacts > div');
         left_contacts.forEach(element => {
