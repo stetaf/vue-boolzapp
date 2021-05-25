@@ -187,7 +187,7 @@ const app = new Vue ({
         sendMessage() {
             let message_textarea = document.querySelector('.inputs > textarea');
             let message = (message_textarea.value).replaceAll('\n', '').trim();
-            
+
             if (this.current != "") {
                 if (message.length >= 1) {
                     let msgDate = this.getDate();
@@ -350,11 +350,6 @@ const app = new Vue ({
         }
     },
     mounted: function() {
-        // this.current = this.getCurrent(this.contacts, 0);
-        // this.current.id = (this.contacts[0]['avatar'].substring(1, 2));
-        // this.contacts[0]['lastseen'] = this.getLastDate(0);
-        // this.contacts[0]['lastmsg'] = this.getLastMsg(0);
-
         let left_contacts = document.querySelectorAll('.contacts > div');
         left_contacts.forEach(element => {
             element.addEventListener("click", () => {
