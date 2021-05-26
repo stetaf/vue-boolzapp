@@ -309,7 +309,7 @@ const app = new Vue ({
             }, 10);
 
             setTimeout(() => {
-                let message = 'https://cs281.clideo.com/p/BfctBMjLR3ASjYONQYWeuQ/8890e0a993227d4ab8297fc46038f33f/uefa-champions-league-2015-16-intro-hd_mzcw2Sgx.mp3';
+                let message = './assets/audio/the_champions.mp3';
                 let date = this.getDate();
                 let status = "received";
 
