@@ -147,7 +147,7 @@ const app = new Vue ({
             let lastIndex = this.contacts[index]['messages'].length;
             let lastMsg = this.contacts[index]['messages'][lastIndex-1]['text'];
 
-            if (lastMsg.includes('blob') || (lastMsg.includes('http'))) lastMsg = 'Audio';
+            if (lastMsg.includes('blob') || (lastMsg.includes('mp3'))) lastMsg = 'Audio';
             
             return lastMsg;
         },
