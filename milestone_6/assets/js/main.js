@@ -263,8 +263,11 @@ const app = new Vue ({
          * Automatically scrolls to the last message in the chat
          */
         scrollDown() {
-            var div = document.querySelector('.messages');
-            div.scrollTop = div.scrollHeight - div.clientHeight;
+            setTimeout(() => {
+                var div = document.querySelector('.messages');
+                div.scrollTop = div.scrollHeight - div.clientHeight;
+
+            }, 50);
         },
         /**
          * ### startRecording
