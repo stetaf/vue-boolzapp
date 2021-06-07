@@ -290,6 +290,8 @@ body {
     top: -20px;
 }
 
+audio { width: 100% }
+
 /* Colors */
 .bg_light_gray { background-color: #eaeaea; }
 
