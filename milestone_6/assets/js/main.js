@@ -274,17 +274,19 @@ const app = new Vue ({
          * Start recording an audio message
          */
         startRecording() {
-            let buttons = document.querySelectorAll('.inputs > div > i');
-            buttons.forEach((element) => {
-                if (!element.classList.contains('d-none')){
-                    element.classList.add('d-none');
-                    element.classList.remove('d-block');
-                } else {
-                    element.classList.remove('d-none');
-                    element.classList.add('d-block');
-                }
-            });   
-            recorder.start();
+            if (this.current != "") {
+                let buttons = document.querySelectorAll('.inputs > div > i');
+                buttons.forEach((element) => {
+                    if (!element.classList.contains('d-none')){
+                        element.classList.add('d-none');
+                        element.classList.remove('d-block');
+                    } else {
+                        element.classList.remove('d-none');
+                        element.classList.add('d-block');
+                    }
+                });   
+                recorder.start();
+            }
         },
         /**
          * ### stopRecording
@@ -301,6 +303,7 @@ const app = new Vue ({
                     element.classList.add('d-flex');
                 }
             });   
+            
             recorder.stop();
 
             setTimeout(() => {
